@@ -14,7 +14,7 @@ const {addPlan} = context;
   let history = useNavigate();
   const handleToken = (totalAmount,token)=>{
     try{
-        axios.post("http://localhost:5000/auth/stripe/pay",{
+        axios.post("https://stripe-backenddd.onrender.com/auth/stripe/pay",{
             token:token.id,
             amount:totalAmount,
         });
