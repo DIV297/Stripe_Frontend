@@ -101,7 +101,7 @@ const AddUser = async () => {
 
 const [plans,setPlans] = useState([]);
 const fetchplan = async () => {
-  const response = await fetch("https://stripe-backenddd.onrender.com/stripe/fetchplan", {
+  const response = await fetch("https://stripe-backenddd.onrender.com/auth/stripe/fetchplan", {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
