@@ -10,7 +10,7 @@ const [credentials, setCredentials] = useState({ email: '', password: '' })
 const loginUser = async () => {
     // login(user.email,user.password);
     try{
-    const response = await fetch("http://localhost:5000/auth/user/loginuser", {
+    const response = await fetch("https://stripe-backenddd.onrender.com/auth/user/loginuser", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const AddUser = async () => {
   // login(user.email,user.password);
   try{
   const {name,email,password}=credentials;
-  const response = await fetch("http://localhost:5000/auth/user/adduser", {
+  const response = await fetch("https://stripe-backenddd.onrender.com/auth/user/adduser", {
     
       method: 'POST',
       headers: {
@@ -77,7 +77,7 @@ const AddUser = async () => {
   }
   const addPlan = async (plantype, hardware,price,time,date) => {
     try{
-      const response = await fetch("http://localhost:5000/auth/stripe/addplan", {
+      const response = await fetch("https://stripe-backenddd.onrender.com/auth/stripe/addplan", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ const AddUser = async () => {
 
 const [plans,setPlans] = useState([]);
 const fetchplan = async () => {
-  const response = await fetch("http://localhost:5000/auth/stripe/fetchplan", {
+  const response = await fetch("https://stripe-backenddd.onrender.com/stripe/fetchplan", {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
