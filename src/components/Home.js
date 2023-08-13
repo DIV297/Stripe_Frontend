@@ -28,7 +28,9 @@ const tokenHandler = (token)=>{
     handleToken(choosenprice,token);
     history("../paymentpage");
     console.log(detailsArr);
-    addPlan(detailsArr.plantype,detailsArr.hardware,detailsArr.price);
+    if(choosenprice>=1000)
+    addPlan(detailsArr.plantype,detailsArr.hardware,detailsArr.price,'yr');
+  else addPlan(detailsArr.plantype,detailsArr.hardware,detailsArr.price,'month');
 }
 const [mob,setMob] = useState('');
 const [bas,setBas] = useState('');
@@ -38,7 +40,7 @@ const [prem,setPrem] = useState('');
   const [basicprice,setBasicPrice] = useState(200);
   const [standardprice,setStandardPrice] = useState(500);
   const [premiumprice,setPremiumPrice] = useState(700);
-  const [choosenprice,setChoosenprice] = useState(200);
+  const [choosenprice,setChoosenprice] = useState(0);
   const chooseforYear=()=>{
     setMobilePrice(1000);
     setBasicPrice(2000);
@@ -151,7 +153,7 @@ const [prem,setPrem] = useState('');
           <td className={prem}>TV</td>
         </tr>
       </table>
-      <Stripe className="stripe" stripeKey='pk_test_51NdIEmSJLwKvVE9YTRj4H2kfDJuvmFAsVcVouwdODni0BLtMzmQr7LqhrOgj70bMPAuefw3GlU75wiEJl4WNGpPb00Z1McNx22' token={tokenHandler} ></Stripe>  
+      {choosenprice!==0?<div><Stripe className="stripe" stripeKey='pk_test_51NdIEmSJLwKvVE9YTRj4H2kfDJuvmFAsVcVouwdODni0BLtMzmQr7LqhrOgj70bMPAuefw3GlU75wiEJl4WNGpPb00Z1McNx22' token={tokenHandler} ></Stripe></div>:<div></div>}
     </div>
 
   )

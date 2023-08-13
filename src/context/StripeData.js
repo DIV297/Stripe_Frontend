@@ -10,7 +10,7 @@ const [credentials, setCredentials] = useState({ email: '', password: '' })
 const loginUser = async () => {
     // login(user.email,user.password);
     try{
-    const response = await fetch("https://stripe-backenddd.onrender.com/auth/user/loginuser", {
+    const response = await fetch("http://localhost:5000/auth/user/loginuser", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const AddUser = async () => {
   // login(user.email,user.password);
   try{
   const {name,email,password}=credentials;
-  const response = await fetch("https://stripe-backenddd.onrender.com/auth/user/adduser", {
+  const response = await fetch("http://localhost:5000/auth/user/adduser", {
     
       method: 'POST',
       headers: {
@@ -75,15 +75,15 @@ const AddUser = async () => {
     showAlert("danger","Network Error.Please check connection","block");
   }
   }
-  const addPlan = async (plantype, hardware,price) => {
+  const addPlan = async (plantype, hardware,price,time,date) => {
     try{
-      const response = await fetch("https://stripe-backenddd.onrender.com/auth/stripe/addplan", {
+      const response = await fetch("http://localhost:5000/auth/stripe/addplan", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'auth-token': localStorage.getItem('token')
         },
-        body: JSON.stringify({ plantype, hardware,price })
+        body: JSON.stringify({ plantype, hardware,price,time,date })
       });
       const json = await response.json();
       // setCenters(centers.concat(json))
@@ -99,9 +99,9 @@ const AddUser = async () => {
     }
     
 
-const [plans,setPlans] = useState({});
+const [plans,setPlans] = useState([]);
 const fetchplan = async () => {
-  const response = await fetch("https://stripe-backenddd.onrender.com/auth/stripe/fetchplan", {
+  const response = await fetch("http://localhost:5000/auth/stripe/fetchplan", {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const fetchplan = async () => {
 
   });
   const json = await response.json();
-  // console.log(json);
+  console.log(json);
   setPlans(json);
   console.log(plans);
 }
